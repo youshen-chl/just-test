@@ -1,0 +1,1 @@
+https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&queryDate=2016-09-28&from_station=SHH&to_station=BJP

@@ -21,7 +21,6 @@ Example:
 from docopt import docopt
 from stations import stations
 import requests
-from prettytable import PrettyTable
 
 def cli():
 	"""command-line interface"""
@@ -36,41 +35,8 @@ def cli():
 	# add 'verify=False' parameter, do not verify the certificate.
 	r = requests.get(url, verify=False)
 	rows = r.json()['data']['datas']
-#	print(rows)
-	headers = '车次 车站 时间 历时 商务 一等 二等 软卧 硬卧 软座 硬座 无座'.split()
-	pt = PrettyTable()
-	pt._set_field_names(headers)
-	for row in rows:
-	#  pt.add_row()
-	#	iooo = 1	
-		row_table = [ 
-			# 车次
-			row.get('station_train_code'),
-			# 车站
-			'\n'.join([ row.get('from_station_name'), row.get('to_station_name')]),
-			# 时间
-			'\n'.join([ row.get('start_time'), row.get('arrive_time')]),
-			# 历时
-			row.get('lishi'),
-			# 商务
-			row.get('swz_num'),
-			# 一等
-			row.get('zy_num'),
-			# 二等
-			row.get('ze_num'),
-			# 软卧
-			row.get('rw_num'),
-			# 硬卧
-			row.get('yw_num'),
-			# 软座
-			row.get('rz_num'),
-			# 硬座
-			row.get('yz_num'),
-			# 无座
-			row.get('wz_num')
-		]
-		pt.add_row(row_table)
-	print(pt)
+	print(rows)
+
 
 if __name__ == '__main__':
 	cli()
